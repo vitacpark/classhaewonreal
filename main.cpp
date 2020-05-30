@@ -216,7 +216,28 @@ void sorting()
 }
 void mode1()
 {
-    printf("Test");
+    char name[16];
+    char content[10000];
+    char k[16];
+    FILE * nf;
+    FILE * flist;
+    printf("파일 이름을 입력하세요.\n");
+    scanf("%s",name);
+    nf=fopen(name,"w");
+    printf("파일 내용을 입력하세요.\n");
+    gets(k);
+    gets(content);
+    fputs(content,nf);
+    fclose(nf);
+    flist=fopen("filelist.txt","a");
+    fputc('\n',flist);
+    fprintf(flist,"%s ",name);
+    fclose(flist);
+    printf("\n메인으로 돌아갈까요? Y/N\n");
+    char c;
+    scanf(" %c",&c);
+    if(c=='Y') scene1();
+    else mode1();
 }
 void mode2()
 {
